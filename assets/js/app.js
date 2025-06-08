@@ -53,11 +53,14 @@ import { BrowserRouter } from "react-router-dom";
 import React from "react";
 
 import "../css/app.css";
+import { App } from "./page";
 
 function RootComponent() {
   return (
     <IntlProvider locale="en" defaultLocale="en">
-      <BrowserRouter></BrowserRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </IntlProvider>
   );
 }
