@@ -34,7 +34,7 @@ config :esbuild,
   version: "0.14.29",
   default: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --loader:.js=jsx --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/app.js --bundle --target=es2022 --loader:.js=jsx --outdir=../priv/static/assets --loader:.svg=dataurl --loader:.png=dataurl --loader:.jpg=dataurl --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
