@@ -47,19 +47,22 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
+import React from "react";
 import { IntlProvider } from "react-intl";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import React from "react";
 
 import "../css/app.css";
 import { App } from "./page";
+import { UserProvider } from "./userContext";
 
 function RootComponent() {
   return (
     <IntlProvider locale="en" defaultLocale="en">
       <BrowserRouter>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </BrowserRouter>
     </IntlProvider>
   );
