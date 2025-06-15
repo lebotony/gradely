@@ -8,22 +8,46 @@ defmodule GradelyWeb.Router do
     plug :put_root_layout, {GradelyWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Gradely.Plugs.SetUser
+  end
+
+  pipeline :auth do
+    plug Gradely.Guardian.AuthPipeline
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
-  scope "/", GradelyWeb do
+  scope "/auth", GradelyWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/google", GoogleAuthController, :request
+    get "/google/callback", GoogleAuthController, :callback
+    get "/logout", GoogleAuthController, :signout
+  end
+
+  scope "/api", GradelyWeb.Api, as: :api do
+    pipe_through [:api, :auth]
+
+    post "/register", UserController, :create
+    post "/fetch_user", UserController, :get_user
+    post "/login", SessionController, :login
+    post "/logout", SessionController, :logout
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", GradelyWeb do
-  #   pipe_through :api
-  # end
+  scope "/", GradelyWeb do
+    pipe_through [:browser, :auth]
+
+    get "/", PageController, :index
+    get "/*path", PageController, :index
+  end
 
   # Enables LiveDashboard only for development
   #
