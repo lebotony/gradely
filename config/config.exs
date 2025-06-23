@@ -34,7 +34,7 @@ config :esbuild,
   version: "0.14.29",
   default: [
     args:
-      ~w(js/app.js --bundle --target=es2022 --loader:.js=jsx --outdir=../priv/static/assets --loader:.svg=dataurl --loader:.png=dataurl --loader:.jpg=dataurl --external:/fonts/* --external:/images/*),
+      ~w(js/app.jsx --bundle --target=es2022 --loader:.js=jsx --outdir=../priv/static/assets --external:/fonts/* --external:/images/* --loader:.svg=dataurl --loader:.png=dataurl --loader:.jpg=dataurl),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
@@ -46,6 +46,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :gradely, Gradely.Guardian.Guardian,
+  issuer: "gradely",
+  secret_key: "LEo1SzKN9iaK8AUM0Uc55y3txdYU1v1aAh/EHA4ErOT3qHhqkLenazKb1HG6b8Xl"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
