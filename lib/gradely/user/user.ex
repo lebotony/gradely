@@ -4,22 +4,32 @@ defmodule Gradely.User do
   import Ecto.Changeset
 
   alias Argon2
+  alias Gradely.{Avatar, School, Student, Teacher, Parent, Admin}
 
   @manual_params [:username, :email, :password, :role]
   @google_params [:email, :role]
-  @params @google_params ++ @manual_params
-  # ++ [:grade, :gender, :name, :surname]
+  @other_params [:phone_number, :address, :old_password, :first_name, :last_surname, :gender, :school_id, :grade]
+  @params @google_params ++ @manual_params ++ @other_params
 
   schema "users" do
-    # field :name, :string
-    # field :surname, :string
+    field :first_name, :string
+    field :last_surname, :string
     field :username, :string
     field :email, :string
     field :password, :string
-    # field :avatar, :string
+    field :old_password, :string
     field :role, :string
-    # field :grade, :string
-    # field :gender, :string
+    field :grade, :string
+    field :phone_number, :string
+    field :address, :string
+    field :gender, :string
+
+    # has_one :avatar, Avatar
+    belongs_to :school, School
+    has_one :student, Student
+    has_one :teacher, Teacher
+    has_one :parent, Parent
+    has_one :admin, Admin
 
     timestamps()
   end

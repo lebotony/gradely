@@ -1,6 +1,5 @@
 defmodule GradelyWeb.Api.UserView do
   use GradelyWeb, :view
-
   alias GradelyWeb.Api.UserView
 
   def render("index.json", %{users: users}) do
@@ -14,8 +13,8 @@ defmodule GradelyWeb.Api.UserView do
   def render("user.json", %{user: user}) do
     %{
       id: user.id,
-      # name: user.name,
-      # surname: user.surname,
+      first_name: user.first_name,
+      last_name: user.last_name,
       username: user.username,
       email: user.email,
       # avatar: Map.get(user, :avatar, nil),
