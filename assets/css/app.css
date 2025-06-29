@@ -38,10 +38,8 @@ h6 {
   color: white !important;
 }
 
-.Toastify__toast-icon {
-  svg {
-    fill: #e0e0e0 !important;
-  }
+.Toastify__toast-icon svg {
+  fill: #e0e0e0 !important;
 }
 
 .Toastify__toast--success {
