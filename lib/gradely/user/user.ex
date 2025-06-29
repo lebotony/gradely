@@ -8,12 +8,12 @@ defmodule Gradely.User do
 
   @manual_params [:username, :email, :password, :role]
   @google_params [:email, :role]
-  @other_params [:phone_number, :address, :old_password, :first_name, :last_surname, :gender, :school_id, :grade]
+  @other_params [:phone_number, :address, :old_password, :first_name, :last_name, :gender, :school_id, :grade]
   @params @google_params ++ @manual_params ++ @other_params
 
   schema "users" do
     field :first_name, :string
-    field :last_surname, :string
+    field :last_name, :string
     field :username, :string
     field :email, :string
     field :password, :string

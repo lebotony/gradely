@@ -21,7 +21,7 @@ export const signUp = (credentials: Credentials): Promise<UserObject> => {
         .catch((error) => reject(error))
     ),
     {
-      success: "Logged in successfull",
+      success: "Logged in successfully",
       error: "Invalid credentials",
     },
     {
@@ -58,7 +58,7 @@ export const login = (credentials: Credentials): Promise<UserObject> => {
         .catch((error) => reject(error))
     ),
     {
-      success: "Logged in successfull",
+      success: "Logged in successfully",
       error: "Invalid credentials",
     },
     {
@@ -82,7 +82,7 @@ export const logout = () => {
         .catch((error) => reject(error))
     ),
     {
-      success: "Logged out successfull",
+      success: "Logged out successfully",
       error: "Error logging out",
     }
   );
