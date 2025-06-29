@@ -23,8 +23,32 @@ h6 {
   height: 60px;
   width: 300px;
   border-radius: 8px;
-  border: 1px solid rgb(230, 230, 230);
   margin-bottom: 10px;
   margin-left: 10px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  background-color: #ff3131;
+  color: white;
+}
+
+.Toastify__progress-bar {
+  background: #f88379;
+}
+
+.Toastify__close-button {
+  color: white !important;
+}
+
+.Toastify__toast-icon {
+  svg {
+    fill: #e0e0e0 !important;
+  }
+}
+
+.Toastify__toast--success {
+  background-color: #27ae60 !important;
+  color: white;
+}
+
+.Toastify__progress-bar--success {
+  background: #90ee90;
 }
